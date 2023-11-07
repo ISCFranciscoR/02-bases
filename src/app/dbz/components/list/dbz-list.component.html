@@ -1,0 +1,23 @@
+<h4>Listado</h4>
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center" [ngClass]="{
+        'list-group-item-success': isFirst,
+        'list-group-item-danger': isLast
+      }" *ngFor="let character of characters;
+        let index = index;
+        let isFirst = first;
+        let isLast = last;
+        let isEven = even">
+    <div class="d-flex align-items-center">
+      <img *ngIf="character.img" [src]="character.img" [alt]="character.name" class="rounded me-4" width="48"
+           height="auto">
+      <span class="flex-grow-1">{{index + 1}}.-{{character.name}}</span>
+    </div>
+    <div class="d-flex column-gap-2 align-items-center">
+      <span class="badge bg-primary rounded-pill">{{character.attack}}</span>
+      <button class="btn btn-sm btn-danger" (click)="removeCharacter(character)">
+        <trash-solid-icon [size]=16></trash-solid-icon>
+      </button>
+    </div>
+  </li>
+</ul>
